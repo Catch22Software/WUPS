@@ -1,0 +1,39 @@
+Check input list total length
+
+IF length is 0, RETURN NULL
+
+ELIF length is 1, RETURN the list within an empty list as it is
+
+ELSE, CONTINUE with algorithm
+
+Initialize two empty lists, one for the total route, one for
+each individual run of 16 length or less.
+
+WHILE TRUE 
+	Initialize the current position string to be 
+	"Western Governors University" which is the hub location.
+	Initialize i and x to 0.
+	Initialize minimum distance variable to infinity.
+	Initialize index to swap variable to -1.
+	WHILE x < total length of input list minus 1
+		Initialize index variable to the index of the 
+		master address list using the address of the
+		package in the first position of the input list [0].
+		
+		Initialize value variable to be the number of miles
+		between the current position and the location of the
+		package in the first position.
+
+		IF value is greater than 0.0 and less than minimum 			distance, UPDATE the minimum distance to value and 
+		UPDATE index to swap to the current index of the			list [i].
+		
+		IF i < total length of input list minus 1, INCREMENT 		i by 1 and CONTINUE back to the start of the inner 		while loop.
+
+		ELSE, you have reached the end of the list.
+		COPY the list value at the index to swap location to			temp. COPY the list value at index x to the index to 		swap location of the list. COPY the temp value back			to the list value at index x. UPDATE the index 				variable to location of the master address list to 			match the address of the package in position x. 			UPDATE current position string to the name of the 			location of the address of the package in position			x. INCREMENT x by 1 and UPDATE i to be x + 1. 				UPDATE the minimum distance to infinity and UPDATE			index to swap to -1. CONTINUE to top of inner while			loop.
+
+	IF total length of input list is less than 17, INITIALIZE		route to a copy of the now sorted input list and CLEAR the 		input list. BREAK out of the outer while loop. 
+
+	ELSE APPEND to runs the first 16 positions in the input			list. REMOVE the first 16 positions of the input list.			APPEND to route the copy of the runs list. CLEAR the runs		list. CONTINUE to the top of the outer while loop to 			optimize the remaining packages.
+
+RETURN route
